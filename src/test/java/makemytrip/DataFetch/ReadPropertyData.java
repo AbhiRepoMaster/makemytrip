@@ -7,7 +7,7 @@ import java.util.Properties;
 
 public class ReadPropertyData {
 	
-	String propertyFilePath = "C:\\Users\\19048\\Documents\\GitHub\\Java\\TimesheetDemo 1\\TimesheetDemo\\Resources\\EnvironmentDetails.properties";
+	String propertyFilePath = "C:\\Users\\19048\\eclipse-workspace\\makemytrip\\makemytrip\\Resources\\EnvironmentDetails.properties";
 	public Properties readPropertyData()
 	{
 		File propertyFile = new  File(propertyFilePath);
