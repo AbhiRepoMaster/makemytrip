@@ -15,5 +15,6 @@ public interface Booking_details {
 //	public String timesheetSaveButton ="//div[@class='actionToSave']//input[@name='buttonSave']";
 //	public String logoutButton = "//div[@class='header-container']//div[@id='header']//div[@id='rightpanel']//div[@id='menu']//li//a";
 	public String loginURL ="https://www.makemytrip.com/";
+	public String commonModalclose = "//span[@class='commonModal__close']";
 	
 }

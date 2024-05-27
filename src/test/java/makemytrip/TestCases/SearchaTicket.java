@@ -1,12 +1,14 @@
 package makemytrip.TestCases;
 
-
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.testng.ITestResult;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import makemytrip.DataFetch.InputTestData;
@@ -18,31 +20,41 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
-
 public class SearchaTicket {
-	Search search = new Search();
-	
-	
-	WebDriver driver;
-	static ExtentTest test;
-	static ExtentReports report;
-	TestReports reportinstance = new TestReports();
-	
-	
-	
-	//@BeforeMethod
-	public void getReportInstance() {
-		report = reportinstance.getInstance();
-	}
+    WebDriverWait wait;
+    static WebDriver driver;
+    static ExtentTest test;
+    static ExtentReports report;
+    TestReports reportinstance = new TestReports();
+    Search search = new Search(this.driver);
 
+    @BeforeClass
+    public void setUp() {
+        // Initialize WebDriver
+        driver = search.launchBookingScreen();
+        search.closePopup();
+       // wait = new WebDriverWait(driver, 10);
+    }
 
-	@Test
-	
-	public void launchURL()
-	{
-		search.launchBookingScreen();
-	}
-	
-	
-	
+    @Test
+    public void fromCity() {
+        WebElement fromCityInput = driver.findElement(By.xpath("//input[@id='fromCity']//parent::label"));
+        Actions actions = new Actions(driver);
+        actions.click(fromCityInput).perform();
+        actions.sendKeys("MAA").sendKeys(Keys.ENTER).perform();
+    }
+
+    @Test
+    public void toCity() {
+        WebElement toCityInput = driver.findElement(By.xpath("//label[@for='toCity']"));
+        Actions actions = new Actions(driver);
+        actions.click(toCityInput).perform();
+        actions.sendKeys("DEL").sendKeys(Keys.ENTER).perform();
+    }
+
+    @AfterClass
+    public void tearDown() {
+        // Close the WebDriver
+        driver.quit();
+    }
 }
