@@ -25,7 +25,14 @@ public class HomePage implements Booking_details {
 //        Actions actions = new Actions(driver);
 //        actions.click(fromCityInput).perform();
 //        actions.sendKeys(cityCode).sendKeys(Keys.ENTER).perform();
-//    }    
+//    } 
+    
+    
+    
+    
+    
+    
+    
 
     public boolean enterFromCity(String cityCode) {
         WebElement fromCityInput = driver.findElement(By.xpath(FROM_CITY_INPUT));
@@ -44,7 +51,7 @@ public class HomePage implements Booking_details {
 
         // Iterate over city names
         for (WebElement cityElement : cityElements) {
-            if (cityElement.getText().equalsIgnoreCase(cityCode)) {
+            if (cityElement.getText().contains(cityCode)) {
                 cityElement.click();
                 actions.sendKeys(Keys.ENTER).perform();
                 return true;
@@ -62,7 +69,7 @@ public class HomePage implements Booking_details {
 
         // Iterate over airport names
         for (WebElement airportNameElement : airportNameElements) {
-            if (airportNameElement.getText().equalsIgnoreCase(cityCode)) {
+            if (airportNameElement.getText().contains(cityCode)) {
                 airportNameElement.click();
                 actions.sendKeys(Keys.ENTER).perform();
                 return true;
@@ -73,6 +80,8 @@ public class HomePage implements Booking_details {
         System.out.println("City code not found.");
         return false;
     }
+    
+    
 
     public boolean enterToCity(String cityCode) {
         WebElement toCityInput = driver.findElement(By.xpath(TO_CITY_INPUT));
@@ -81,7 +90,7 @@ public class HomePage implements Booking_details {
         actions.sendKeys(cityCode).perform();
 
         // Wait for the suggestions to load using WebDriverWait
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
         wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(TO_CITY_NAME)));
 
         // Extract the city codes and names
@@ -91,7 +100,7 @@ public class HomePage implements Booking_details {
 
         // Iterate over city names
         for (WebElement cityElement : cityElements) {
-            if (cityElement.getText().equalsIgnoreCase(cityCode)) {
+            if (cityElement.getText().contains(cityCode)) {
                 cityElement.click();
                 actions.sendKeys(Keys.ENTER).perform();
                 return true;
@@ -109,7 +118,7 @@ public class HomePage implements Booking_details {
 
         // Iterate over airport names
         for (WebElement airportNameElement : airportNameElements) {
-            if (airportNameElement.getText().equalsIgnoreCase(cityCode)) {
+            if (airportNameElement.getText().contains(cityCode)) {
                 airportNameElement.click();
                 actions.sendKeys(Keys.ENTER).perform();
                 return true;
@@ -122,5 +131,7 @@ public class HomePage implements Booking_details {
     }
 
 
+    
+    
    
 }

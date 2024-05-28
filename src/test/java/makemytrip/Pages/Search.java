@@ -14,8 +14,9 @@ import makemytrip.Commons.IdentifyDriver;
 import makemytrip.Commons.WebConfigurations;
 import makemytrip.DataFetch.*;
 import makemytrip.ExplicitWaitFunction.*;
+import org.openqa.selenium.interactions.Actions;
 
-public class Search {
+public class Search implements Booking_details {
 
 	static WebDriver driver;
 	WebDriverWait wait;
@@ -42,12 +43,20 @@ public class Search {
 	}
 	
 
-public void closePopup() {
-	Actions actions = new Actions(driver);
-	WebElement closeButton = driver.findElement(By.xpath("//span[@class='commonModal__close']"));
-	// Perform the click action
-	actions.moveToElement(closeButton).click().perform();
+	public void closePopup() {
+	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // 10 seconds wait
+    Actions actions = new Actions(driver);
+    int retryCount = 0;
+    int maxRetries = 5; 
+    while (retryCount < maxRetries) {
+        try {
+            WebElement closeButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(CLOSEPOPUP)));
+            actions.moveToElement(closeButton).click().perform();
+            retryCount++;
+            Thread.sleep(1000);
+        } catch (Exception e) {
+            break;
+        }
+    }
 }
-
-}
-
+ }

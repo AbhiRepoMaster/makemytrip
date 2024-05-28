@@ -5,6 +5,7 @@
     <classes>
       <class name="makemytrip.TestCases.SearchaTicket">
         <methods>
+          <include name="testToCity"/>
           <include name="setUp"/>
           <include name="testFromCity"/>
         </methods>
