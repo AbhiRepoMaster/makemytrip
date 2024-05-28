@@ -43,7 +43,7 @@ public class SearchaTicket {
     
     
     
-    @AfterClass
+   // @AfterClass
     public void tearDown() {
         driver.quit();
     }
