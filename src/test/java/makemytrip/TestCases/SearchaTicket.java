@@ -1,6 +1,11 @@
 package makemytrip.TestCases;
 
+import java.time.Duration;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -41,13 +46,15 @@ public class SearchaTicket {
     }
       
     
-    @Test
-    
-    public void testSelectFromDate() {
-    	
-    	
-    	
+   // @Test
+    public void selectDate() {
+        String dateToSelect = "31 May 2024"; 
+        
     }
+    
+    
+    
+
     
     
     
