@@ -32,12 +32,12 @@ public class SearchaTicket {
     @Test
     public void testFromCity() {
     	homePage = new HomePage(driver);
-        homePage.enterFromCity("MAA");
+        homePage.enterFromCity("Bangkok");
     }
     
     @Test
     public void testToCity() {
-        homePage.enterToCity("DEL");
+        homePage.enterToCity("BOM");
     }
       
     
