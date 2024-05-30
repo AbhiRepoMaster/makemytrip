@@ -1,6 +1,8 @@
 package makemytrip.TestCases;
 
 import java.time.Duration;
+import org.testng.Assert;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -23,7 +25,7 @@ import makemytrip.Pages.*;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 
-import dev.failsafe.internal.util.Assert;
+//import dev.failsafe.internal.util.Assert;
 
 public class SearchaTicket {
 	 HomePage homePage;
@@ -78,64 +80,72 @@ public class SearchaTicket {
     @Test(priority = 3)
     public void selectDate() {
         // Date to select
-        String dateFromSelect = "30 June 2024";
-
+        String dateFromSelect = "30 Sept 2024";
+        
         // Extract day, month, and year from the input date
         String[] dateParts = dateFromSelect.split(" ");
         String day = dateParts[0];
         String month = dateParts[1];
         String year = dateParts[2];
-
-        // Print the extracted month and year
-        System.out.println("Month: " + month);
-        System.out.println("Year: " + year);
-
+        
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(100));
+        
+        boolean dateSelected = false;
+        int maxAttempts = 12; // Maximum number of attempts to find the date
+        
+        for (int attempt = 0; attempt < maxAttempts; attempt++) {
+            // Check if the current page contains the desired date in any displayed month
+            List<WebElement> dateElements = driver.findElements(By.xpath("//div[@class='DayPicker-Month']//p[text()='" + day + "']"));
+            
+            // If the desired date is found, click on it and exit the loop
+            if (!dateElements.isEmpty()) {
+                for (WebElement dateElement : dateElements) {
+                    // Check if the date is in the desired month and year
+                    WebElement monthElement = dateElement.findElement(By.xpath("../../../../..//div[@class='DayPicker-Caption']"));
+                    String monthYearText = monthElement.getText();
+                    if (monthYearText.contains(month) && monthYearText.contains(year)) {
+                        // Log found date's month and year
+                        System.out.println("Found date - Month: " + month + ", Year: " + year);
 
-        // Construct the CSS selector for the month and year elements
-        String cssSelector = "div.DayPicker-Caption > div";
+                        // Click on the date element
+                        Actions actions = new Actions(driver);
+                        actions.moveToElement(dateElement).click().perform();
+                        
+                        // Verify that the selected date matches the expected date
+                        String selectedDateXPath = String.format("//div[@class='DayPicker-Day DayPicker-Day--selected']//p[text()='%s']", day);
+                        WebElement selectedDateElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(selectedDateXPath)));
+                        String selectedDate = selectedDateElement.getText();
+                        System.out.println("Selected date: " + selectedDate);
+                        Assert.assertEquals(selectedDate, day, "Selected date does not match expected date");
+                        dateSelected = true; 
+                        break;
+                    }
+                }
+                if (dateSelected) {
+                    break; // Exit the loop if date is successfully selected
+                }
+            }
 
-        // Find the month and year elements
-        List<WebElement> monthYearElements = driver.findElements(By.cssSelector(cssSelector));
-        List<String> months = new ArrayList<String>();
-
-        // Retrieve all month values and store them in the list
-        for (WebElement element : monthYearElements) {
-            String monthYearText = element.getText();
-            System.out.println("Found month and year: " + monthYearText);
-            months.add(monthYearText);
-        }
-
-        // Check if the input month is in the list of months
-        boolean monthFound = false;
-        for (String monthYearText : months) {
-            if (monthYearText.contains(month) && monthYearText.contains(year)) {
-                monthFound = true;
-                break;
+            // If the date is not found on the current page, click the next month button
+            try {
+                WebElement nextMonthButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@aria-label='Next Month']")));
+                nextMonthButton.click();
+                System.out.println("Moving to next month...");
+            } catch (Exception e) {
+                System.out.println("Failed to click the next month button: " + e.getMessage());
+                Assert.fail("Failed to click the next month button: " + e.getMessage());
             }
         }
 
-        if (monthFound) {
-            // Construct the XPath for the date element
-            String dateXPath = String.format("//div[text()='%s %s']//ancestor::div[@class='DayPicker-Month']//div[@class='dateInnerCell']//p[text()='%s']", month, year, day);
-
-            // Find the date element
-            WebElement dateElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(dateXPath)));
-
-            // Click on the date element
-            Actions actions = new Actions(driver);
-            actions.moveToElement(dateElement).click().perform();
-
-//            // Verify that the selected date matches the expected date
-//            WebElement selectedDateElement = driver.findElement(By.xpath("//div[contains(@class, 'DayPicker-Day--selected')]//p"));
-//            String selectedDate = selectedDateElement.getText();
-//            System.out.println("Selected date: " + selectedDate);
-//            Assert.assertTrue(selectedDate.equals(day), "Selected date does not match expected date: " + selectedDate + " != " + day);
-//        } else {
-//            System.out.println("Month not found in the list.");
-//            Assert.fail("Month and year do not match or not found.");
+        if (!dateSelected) {
+            Assert.fail("Failed to select the date within the maximum number of attempts.");
+        } else {
+            // Forcefully exit the loop and pass the test
+            System.out.println("Date selected successfully. Exiting loop and passing the test.");
         }
     }
+
+
 
 
     

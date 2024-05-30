@@ -1,25 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+<testng-results ignored="0" total="3" passed="2" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-05-30T16:44:31 IST" name="Default suite" finished-at="2024-05-30T16:44:52 IST" duration-ms="20733">
+  <suite started-at="2024-05-30T18:24:15 IST" name="Default suite" finished-at="2024-05-30T18:26:17 IST" duration-ms="122142">
     <groups>
     </groups>
-    <test started-at="2024-05-30T16:44:31 IST" name="Default test" finished-at="2024-05-30T16:44:52 IST" duration-ms="20733">
+    <test started-at="2024-05-30T18:24:15 IST" name="Default test" finished-at="2024-05-30T18:26:17 IST" duration-ms="122142">
       <class name="makemytrip.TestCases.SearchaTicket">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:makemytrip.TestCases.SearchaTicket@350aac89]" started-at="2024-05-30T16:44:31 IST" name="setUp" finished-at="2024-05-30T16:44:51 IST" duration-ms="19076" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:makemytrip.TestCases.SearchaTicket@350aac89]" started-at="2024-05-30T18:24:15 IST" name="setUp" finished-at="2024-05-30T18:24:35 IST" duration-ms="19783" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="testFromCity()[pri:1, instance:makemytrip.TestCases.SearchaTicket@350aac89]" started-at="2024-05-30T16:44:51 IST" name="testFromCity" finished-at="2024-05-30T16:44:51 IST" duration-ms="589" status="PASS">
+        <test-method signature="testFromCity()[pri:1, instance:makemytrip.TestCases.SearchaTicket@350aac89]" started-at="2024-05-30T18:24:35 IST" name="testFromCity" finished-at="2024-05-30T18:24:35 IST" duration-ms="589" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testFromCity -->
-        <test-method signature="testToCity()[pri:2, instance:makemytrip.TestCases.SearchaTicket@350aac89]" started-at="2024-05-30T16:44:51 IST" name="testToCity" finished-at="2024-05-30T16:44:52 IST" duration-ms="687" status="PASS">
+        <test-method signature="testToCity()[pri:2, instance:makemytrip.TestCases.SearchaTicket@350aac89]" started-at="2024-05-30T18:24:35 IST" name="testToCity" finished-at="2024-05-30T18:24:36 IST" duration-ms="751" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testToCity -->
-        <test-method signature="selectDate()[pri:3, instance:makemytrip.TestCases.SearchaTicket@350aac89]" started-at="2024-05-30T16:44:52 IST" name="selectDate" finished-at="2024-05-30T16:44:52 IST" duration-ms="302" status="PASS">
+        <test-method signature="selectDate()[pri:3, instance:makemytrip.TestCases.SearchaTicket@350aac89]" started-at="2024-05-30T18:24:36 IST" name="selectDate" finished-at="2024-05-30T18:26:17 IST" duration-ms="100953" status="FAIL">
+          <exception class="org.openqa.selenium.TimeoutException">
+            <message>
+              <![CDATA[Expected condition failed: waiting for presence of element located by: By.xpath: //div[@class='DayPicker-Day DayPicker-Day--selected']//p[text()='30'] (tried for 100 second(s) with 500 milliseconds interval)]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for presence of element located by: By.xpath: //div[@class='DayPicker-Day DayPicker-Day--selected']//p[text()='30'] (tried for 100 second(s) with 500 milliseconds interval)
+at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+at makemytrip.TestCases.SearchaTicket.selectDate(SearchaTicket.java:116)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:848)
+at org.testng.TestRunner.run(TestRunner.java:621)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+at org.testng.TestNG.runSuites(TestNG.java:1114)
+at org.testng.TestNG.run(TestNG.java:1082)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//div[@class='DayPicker-Day DayPicker-Day--selected']//p[text()='30']"}
+  (Session info: chrome=125.0.6422.113)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.17.0', revision: 'e52b1be057*'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.9'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [88440f6c3cb4ac2949aeae4930c4d372, findElement {value=//div[@class='DayPicker-Day DayPicker-Day--selected']//p[text()='30'], using=xpath}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 125.0.6422.113, chrome: {chromedriverVersion: 125.0.6422.78 (14db42ec38ad..., userDataDir: C:\Users\19048\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:54934}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:54934/devtoo..., se:cdpVersion: 125.0.6422.113, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 88440f6c3cb4ac2949aeae4930c4d372
+at jdk.internal.reflect.GeneratedConstructorAccessor10.newInstance(Unknown Source)
+at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:185)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:134)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:51)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:519)
+at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:356)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:350)
+at org.openqa.selenium.support.ui.ExpectedConditions$6.apply(ExpectedConditions.java:171)
+at org.openqa.selenium.support.ui.ExpectedConditions$6.apply(ExpectedConditions.java:168)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:203)
+... 29 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.TimeoutException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- selectDate -->
