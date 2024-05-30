@@ -132,7 +132,7 @@ public class HomePage implements Booking_details {
 
     
     //Selecting Departure date and Return date.
-    //dateToSelect
+    //dateFromSelect
     
     
     
