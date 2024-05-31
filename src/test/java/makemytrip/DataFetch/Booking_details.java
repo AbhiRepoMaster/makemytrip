@@ -15,10 +15,12 @@ public interface Booking_details {
 	    String TO_CITY_COD = "//p[contains(@class, 'font14 appendBottom5 blackText')]";
 	    String TO_CITY_AIRPORT_NAME = "//p[contains(@class, 'font12 greyText appendBottom3 lineHeight14')]";
 	    
-	    //Departure elements
+	    //Departure elements xpath
 	    
-	    
-	    
+	    String DATE_ELEMENT_XPATH = "//div[@class='DayPicker-Month']//p";
+	    String MONTH_ELEMENT_XPATH = "../../../../..//div[@class='DayPicker-Caption']";
+	    String NEXT_MONTH_BUTTON_XPATH = "//span[@aria-label='Next Month']";
+	    String DEPARTURE_ELEMENT_XPATH = "//input[@id='departure-input']";
 	    
 	    
 	    //Return elements
