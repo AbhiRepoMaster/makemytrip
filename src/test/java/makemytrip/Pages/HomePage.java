@@ -2,6 +2,7 @@ package makemytrip.Pages;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -138,79 +139,73 @@ public class HomePage implements Booking_details {
     //Selecting Departure date and Return date.
     //dateFromSelect
     
-    public void selectDate(String dateToSelect, String monthElementLocator, String nextMonthButtonLocator) {
-        // Extract day, month, and year from the input date
-        String[] dateParts = dateToSelect.split(" ");
-        int day = Integer.parseInt(dateParts[0]);
-        String month = dateParts[1];
-        int year = Integer.parseInt(dateParts[2]);
-        
+    public static boolean selectDate(WebDriver driver, String dateToSelect, int maxAttempts) {
+        // Parse the input date
+        LocalDate inputDate;
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d MMM yyyy", Locale.ENGLISH);
+            inputDate = LocalDate.parse(dateToSelect, formatter);
+        } catch (DateTimeParseException e) {
+            System.out.println("Invalid date format: " + e.getMessage());
+            return false;
+        }
+
         // Get the current date
         LocalDate currentDate = LocalDate.now();
-        
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d MMM yyyy", Locale.ENGLISH);
 
-        LocalDate inputDate = LocalDate.parse(dateToSelect, formatter);
-        
         // Check if the input date is in the past
         if (inputDate.isBefore(currentDate)) {
             System.out.println("The selected date is in the past. Cannot book a ticket for a past date.");
-            Assert.fail("The selected date is in the past. Cannot book a ticket for a past date.");
-            return;
+            return false;
         }
-        
+
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(100));
-        
         boolean dateSelected = false;
-        int maxAttempts = 22; // Maximum number of attempts to find the date
-        
+
         for (int attempt = 0; attempt < maxAttempts; attempt++) {
             // Check if the current page contains the desired date in any displayed month
-            List<WebElement> dateElements = driver.findElements(By.xpath(DATE_ELEMENT_XPATH + "//p[text()='" + day + "']"));
+            List<WebElement> dateElements = driver.findElements(By.xpath("//div[@class='DayPicker-Month']//p[text()='" + inputDate.getDayOfMonth() + "']"));
             
             // If the desired date is found, click on it and exit the loop
             if (!dateElements.isEmpty()) {
                 for (WebElement dateElement : dateElements) {
                     // Check if the date is in the desired month and year
-                    WebElement monthElement = dateElement.findElement(By.xpath(monthElementLocator));
+                    WebElement monthElement = dateElement.findElement(By.xpath("../../../../..//div[@class='DayPicker-Caption']"));
                     String monthYearText = monthElement.getText();
-                    if (monthYearText.contains(month) && monthYearText.contains(String.valueOf(year))) {
+                    String[] monthYearParts = monthYearText.split(" ");
+                    String displayedMonth = monthYearParts[0].substring(0, 3);
+                    int displayedYear = Integer.parseInt(monthYearParts[1]);
+
+                    // Log the displayed month and year for debugging
+                    System.out.println("Displayed month: " + displayedMonth + ", Displayed year: " + displayedYear);
+
+                    if (displayedMonth.equalsIgnoreCase(inputDate.getMonth().name().substring(0, 3)) && displayedYear == inputDate.getYear()) {
                         // Log found date's month and year
-                        System.out.println("Found date - Month: " + month + ", Year: " + year);
+                        System.out.println("Found date - Month: " + displayedMonth + ", Year: " + displayedYear);
                         
                         // Click on the date element
                         Actions actions = new Actions(driver);
                         actions.moveToElement(dateElement).click().perform();
-                        dateSelected = true; 
+                        dateSelected = true;
                         break;
                     }
                 }
                 if (dateSelected) {
-                    break;
+                    break; // Exit the loop if date is successfully selected
                 }
             }
-            
+
             // If the date is not found on the current page, click the next month button
             try {
-                WebElement nextMonthButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(nextMonthButtonLocator)));
+                WebElement nextMonthButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@aria-label='Next Month']")));
                 nextMonthButton.click();
                 System.out.println("Moving to next month...");
             } catch (Exception e) {
                 System.out.println("Failed to click the next month button: " + e.getMessage());
-                Assert.fail("Failed to click the next month button: " + e.getMessage());
+                return false;
             }
         }
-        
-        if (!dateSelected) {
-            Assert.fail("Failed to select the date");
-        } else {
-            System.out.println("Date selected successfully. Exiting loop and passing the test.");
-        }
+
+        return dateSelected;
     }
-
-
-
-    
-    
-   
 }
