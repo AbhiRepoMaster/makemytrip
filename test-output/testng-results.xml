@@ -2,24 +2,24 @@
 <testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-05-31T13:56:47 IST" name="Default suite" finished-at="2024-05-31T13:57:09 IST" duration-ms="22233">
+  <suite started-at="2024-05-31T15:29:06 IST" name="Default suite" finished-at="2024-05-31T15:29:27 IST" duration-ms="20755">
     <groups>
     </groups>
-    <test started-at="2024-05-31T13:56:47 IST" name="Default test" finished-at="2024-05-31T13:57:09 IST" duration-ms="22233">
+    <test started-at="2024-05-31T15:29:06 IST" name="Default test" finished-at="2024-05-31T15:29:27 IST" duration-ms="20755">
       <class name="makemytrip.TestCases.SearchaTicket">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:makemytrip.TestCases.SearchaTicket@350aac89]" started-at="2024-05-31T13:56:47 IST" name="setUp" finished-at="2024-05-31T13:57:07 IST" duration-ms="19636" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:makemytrip.TestCases.SearchaTicket@75437611]" started-at="2024-05-31T15:29:06 IST" name="setUp" finished-at="2024-05-31T15:29:25 IST" duration-ms="18854" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="testFromCity()[pri:1, instance:makemytrip.TestCases.SearchaTicket@350aac89]" started-at="2024-05-31T13:57:07 IST" name="testFromCity" finished-at="2024-05-31T13:57:07 IST" duration-ms="584" status="PASS">
+        <test-method signature="testFromCity()[pri:1, instance:makemytrip.TestCases.SearchaTicket@75437611]" started-at="2024-05-31T15:29:25 IST" name="testFromCity" finished-at="2024-05-31T15:29:26 IST" duration-ms="657" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testFromCity -->
-        <test-method signature="testToCity()[pri:2, instance:makemytrip.TestCases.SearchaTicket@350aac89]" started-at="2024-05-31T13:57:07 IST" name="testToCity" finished-at="2024-05-31T13:57:08 IST" duration-ms="618" status="PASS">
+        <test-method signature="testToCity()[pri:2, instance:makemytrip.TestCases.SearchaTicket@75437611]" started-at="2024-05-31T15:29:26 IST" name="testToCity" finished-at="2024-05-31T15:29:26 IST" duration-ms="640" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testToCity -->
-        <test-method signature="selectDate()[pri:3, instance:makemytrip.TestCases.SearchaTicket@350aac89]" started-at="2024-05-31T13:57:08 IST" name="selectDate" finished-at="2024-05-31T13:57:09 IST" duration-ms="1333" status="PASS">
+        <test-method signature="selectDate()[pri:3, instance:makemytrip.TestCases.SearchaTicket@75437611]" started-at="2024-05-31T15:29:26 IST" name="selectDate" finished-at="2024-05-31T15:29:27 IST" duration-ms="528" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- selectDate -->

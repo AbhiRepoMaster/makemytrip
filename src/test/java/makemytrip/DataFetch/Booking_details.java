@@ -19,8 +19,8 @@ public interface Booking_details {
 	    
 	    String DATE_ELEMENT_XPATH = "//div[@class='DayPicker-Month']//p";
 	    String MONTH_ELEMENT_XPATH = "../../../../..//div[@class='DayPicker-Caption']";
-	    String NEXT_MONTH_BUTTON_XPATH = "//span[@aria-label='Next Month']";
-	    String DEPARTURE_ELEMENT_XPATH = "//input[@id='departure-input']";
+	    String NEXT_MONTH_BUTTON = "//span[@aria-label='Next Month']";
+	    String DEPARTURE_ELEMENT = "//input[@id='departure-input']";
 	    
 	    
 	    //Return elements

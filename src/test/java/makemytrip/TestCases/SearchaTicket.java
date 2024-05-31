@@ -62,28 +62,12 @@ public class SearchaTicket {
     public void selectDate1() {
         String dateFromSelect = "30 May 2024"; 
         
-    }
-    
-    
-  
-//    @Test (priority = 3)
-//    
-//    public void selectDate() {
-//        // Date to select
-//        String dateFromSelect = "30 May 2024";
-//        
-//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(100)); // Change the timeout as needed
-//        WebElement dateElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='DayPicker-Day DayPicker-Day--today']//p[contains(text(),'" + dateFromSelect.split(" ")[0] + "')]")));
-//        
-//        dateElement.click();
-//    }
-    
+    }  
 
     @Test(priority = 3)
     public void selectDate() {
         // Date to select
-        String dateFromSelect = "30 Apr 2025";
-        
+        String dateFromSelect = "30 Sep 2024";
         
         // Extract day, month, and year from the input date
         String[] dateParts = dateFromSelect.split(" ");
@@ -155,6 +139,7 @@ public class SearchaTicket {
             System.out.println("Date selected successfully. Exiting loop and passing the test.");
         }
     }
+
 
 
 
