@@ -208,6 +208,10 @@ public class HomePage implements Booking_details {
         return dateSelected;
     }
     
-    
+    //searchButtonFunctionality 
+    public void searchButtonFunctionality(String searchButtonXpath) {
+        WebElement searchButton = driver.findElement(By.xpath(searchButtonXpath));
+        searchButton.click();
+    }
    
 }

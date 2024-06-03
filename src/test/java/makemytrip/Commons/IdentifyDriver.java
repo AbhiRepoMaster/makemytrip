@@ -16,6 +16,7 @@ public class IdentifyDriver {
 	{
 		ReadPropertyData readproperty = new ReadPropertyData();
 		String browserName = readproperty.readPropertyData().getProperty("browser");
+		System.out.println(browserName);
 		return browserName;
 	}
 	
