@@ -23,7 +23,13 @@ public interface Booking_details {
 	    String DEPARTURE_ELEMENT = "//input[@id='departure-input']";
 	    
 	    
-	    //Return elements
+	    //Travellers elements
+	    
+	    String TRAVELLERS_DROPDOWN = "//label[contains(@for,'travellers')]";
+	    String APPLY_BUTTON = "//button[@data-cy='travellerApplyBtn']";
+	    String TOTAL_TRAVELERS = "//span[@class='appendRight10']//span[@class='font30 latoBlack']";
+	    
+	    
 	
 }
 

@@ -57,10 +57,9 @@ public class SearchaTicket {
         homePage.enterToCity("Dabolim");
     }
       
-    
     @Test(priority = 3)
     public void selectDateTest() {
-        String dateToSelect = "3 Jun 2024";
+        String dateToSelect = "5 Jun 2024";
         boolean isDateSelected = HomePage.selectDate(driver, dateToSelect, 22);
 
         if (!isDateSelected) {
@@ -70,7 +69,74 @@ public class SearchaTicket {
         }
     }
 
- 
+//    @Test(priority = 4)
+//    public void TravellersDataSelectTest() {
+//        WebElement returnElement = driver.findElement(By.xpath("//label[contains(@for,'travellers')]"));
+//        Actions actions = new Actions(driver);
+//        actions.moveToElement(returnElement).click().perform();
+//        selectNumberOfTravellers("adults", 5);
+//        selectNumberOfTravellers("children", 2);
+//        selectNumberOfTravellers("infants", 3);
+//
+//        WebElement applyButton = driver.findElement(By.xpath("//button[@data-cy='travellerApplyBtn']"));
+//        applyButton.click();
+//       // WebElement travellersInput = driver.findElement(By.xpath("//label[contains(@for,'travellers')]"));
+//       // Assert.assertTrue(travellersInput.getText().contains("5 Adults, 2 Children, 3 Infants"), "Traveler selection did not match the expected values.");
+//    }
+//    private void selectNumberOfTravellers(String type, int count) {
+//        String dataCy = type + "-" + count;
+//        WebElement element = driver.findElement(By.xpath("//li[@data-cy='" + dataCy + "']"));
+//        element.click();
+//    }
+
+    @Test(priority = 4)
+    public void TravellersDataSelectTest() {
+        // Open the travelers dropdown
+        WebElement returnElement = driver.findElement(By.xpath("//label[contains(@for,'travellers')]"));
+        Actions actions = new Actions(driver);
+        actions.moveToElement(returnElement).click().perform();
+
+        // Select the number of adults, children, and infants
+        int adults = 5;
+        int children = 4;
+        int infants = 3;
+
+        selectNumberOfTravellers("adults", adults);
+        selectNumberOfTravellers("children", children);
+        selectNumberOfTravellers("infants", infants);
+
+        // Click on the apply button
+        WebElement applyButton = driver.findElement(By.xpath("//button[@data-cy='travellerApplyBtn']"));
+        applyButton.click();
+
+        // Log the number of selected travelers
+       // System.out.println("Selected Travelers:");
+        System.out.println("Adults: " + adults);
+        System.out.println("Children: " + children);
+        System.out.println("Infants: " + infants);
+
+        int expectedTotal = adults + children + infants;
+        System.out.println("Expected Total Travelers: " + expectedTotal);
+
+        // Verify the total number of travelers displayed
+        WebElement totalTravelersDisplay = driver.findElement(By.xpath("//span[@class='appendRight10']//span[@class='font30 latoBlack']"));
+        String totalTravelersText = totalTravelersDisplay.getText().trim();
+        int actualTotal = Integer.parseInt(totalTravelersText);
+
+        System.out.println("Actual Total Travelers Displayed: " + actualTotal);
+
+        // Assert if the actual total matches the expected total
+        Assert.assertEquals(actualTotal, expectedTotal, "Total number of travelers does not match the expected value.");
+    }
+
+    private void selectNumberOfTravellers(String type, int count) {
+        String dataCy = type + "-" + count;
+        WebElement element = driver.findElement(By.xpath("//li[@data-cy='" + dataCy + "']"));
+        element.click();
+    }
+    
+    
+    
    // @AfterClass
     public void tearDown() {
         driver.quit();

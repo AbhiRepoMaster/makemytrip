@@ -176,7 +176,6 @@ public class HomePage implements Booking_details {
                     String displayedMonth = monthYearParts[0].substring(0, 3);
                     int displayedYear = Integer.parseInt(monthYearParts[1]);
 
-                    // Log the displayed month and year for debugging
                     System.out.println("Displayed month: " + displayedMonth + ", Displayed year: " + displayedYear);
 
                     if (displayedMonth.equalsIgnoreCase(inputDate.getMonth().name().substring(0, 3)) && displayedYear == inputDate.getYear()) {
@@ -191,7 +190,7 @@ public class HomePage implements Booking_details {
                     }
                 }
                 if (dateSelected) {
-                    break; // Exit the loop if date is successfully selected
+                    break; 
                 }
             }
 
@@ -208,4 +207,7 @@ public class HomePage implements Booking_details {
 
         return dateSelected;
     }
+    
+    
+   
 }
