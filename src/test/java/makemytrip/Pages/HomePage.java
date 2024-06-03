@@ -214,4 +214,12 @@ public class HomePage implements Booking_details {
         searchButton.click();
     }
    
+    
+    
+    public static void selectNumberOfTravellers(WebDriver driver, String type, int count) {
+        String dataCy = type + "-" + count;
+        WebElement element = driver.findElement(By.xpath("//li[@data-cy='" + dataCy + "']"));
+        element.click();
+    }
+    
 }

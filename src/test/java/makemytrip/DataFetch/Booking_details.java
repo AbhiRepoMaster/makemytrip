@@ -30,10 +30,10 @@ public interface Booking_details {
 	    String TOTAL_TRAVELERS = "//span[@class='appendRight10']//span[@class='font30 latoBlack']";
 	    
 	    //SearchButton elements
-	    String SEARCH_BUTTON_XPATH = "//a[contains(@class,'primaryBtn font24 latoBold widgetSearchBtn')]";
-	    
-	    
-	
-}
+	    String TRAVELLERS_DROPDOWN_LABEL = "//label[contains(@for,'travellers')]";
+	    String TRAVELLER_APPLY_BUTTON = "//button[@data-cy='travellerApplyBtn']";
+	    String TOTAL_TRAVELERS_DISPLAY = "//span[@class='appendRight10']//span[@class='font30 latoBlack']";
+
+	}
 
 

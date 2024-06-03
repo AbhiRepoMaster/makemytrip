@@ -71,26 +71,6 @@ public class SearchaTicket {
         }
     }
 
-//    @Test(priority = 4)
-//    public void TravellersDataSelectTest() {
-//        WebElement returnElement = driver.findElement(By.xpath("//label[contains(@for,'travellers')]"));
-//        Actions actions = new Actions(driver);
-//        actions.moveToElement(returnElement).click().perform();
-//        selectNumberOfTravellers("adults", 5);
-//        selectNumberOfTravellers("children", 2);
-//        selectNumberOfTravellers("infants", 3);
-//
-//        WebElement applyButton = driver.findElement(By.xpath("//button[@data-cy='travellerApplyBtn']"));
-//        applyButton.click();
-//       // WebElement travellersInput = driver.findElement(By.xpath("//label[contains(@for,'travellers')]"));
-//       // Assert.assertTrue(travellersInput.getText().contains("5 Adults, 2 Children, 3 Infants"), "Traveler selection did not match the expected values.");
-//    }
-//    private void selectNumberOfTravellers(String type, int count) {
-//        String dataCy = type + "-" + count;
-//        WebElement element = driver.findElement(By.xpath("//li[@data-cy='" + dataCy + "']"));
-//        element.click();
-//    }
-
     @Test(priority = 4)
     public void TravellersDataSelectTest() {
         // Open the travelers dropdown
@@ -125,7 +105,7 @@ public class SearchaTicket {
         System.out.println("Actual Total Travelers Displayed: " + actualTotal);
 
         // Assert if the actual total matches the expected total
-      //  Assert.assertEquals(actualTotal, expectedTotal, "Total number of travelers does not match the expected value.");
+        Assert.assertEquals(actualTotal, expectedTotal, "Total number of travelers does not match the expected value.");
     }
 
     private void selectNumberOfTravellers(String type, int count) {
@@ -135,6 +115,8 @@ public class SearchaTicket {
     }
     
     
+    
+    
     @Test (priority = 5)
     public void testSearchButtonFunctionality() throws InterruptedException {
     	Thread.sleep(500);
@@ -142,11 +124,6 @@ public class SearchaTicket {
         searchButton.click();
     }
     
-//    @Test(priority = 5)
-//    public void testSearchButtonFunctionality() {
-//        HomePage.searchButtonFunctionality(SEARCH_BUTTON_XPATH);
-//    }
-   
     
    // @AfterClass
     public void tearDown() {
