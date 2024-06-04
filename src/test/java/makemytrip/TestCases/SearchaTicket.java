@@ -29,9 +29,9 @@ import com.relevantcodes.extentreports.ExtentTest;
 //import dev.failsafe.internal.util.Assert;
 
 public class SearchaTicket {
-	 HomePage homePage;
+	HomePage homePage;
     WebDriverWait wait;
-    static WebDriver driver;
+    public static WebDriver driver;
     static ExtentTest test;
     static ExtentReports report;
     TestReports reportinstance = new TestReports();

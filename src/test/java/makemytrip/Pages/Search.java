@@ -44,7 +44,7 @@ public class Search implements Booking_details {
 	
 
 	public void closePopup() {
-	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // 10 seconds wait
+	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); 
     Actions actions = new Actions(driver);
     int retryCount = 0;
     int maxRetries = 5; 

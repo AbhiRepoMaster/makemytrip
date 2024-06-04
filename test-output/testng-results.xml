@@ -2,32 +2,32 @@
 <testng-results ignored="0" total="5" passed="5" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-06-03T16:46:01 IST" name="Default suite" finished-at="2024-06-03T16:46:26 IST" duration-ms="24902">
+  <suite started-at="2024-06-04T12:02:22 IST" name="Default suite" finished-at="2024-06-04T12:02:51 IST" duration-ms="29301">
     <groups>
     </groups>
-    <test started-at="2024-06-03T16:46:01 IST" name="Default test" finished-at="2024-06-03T16:46:26 IST" duration-ms="24902">
+    <test started-at="2024-06-04T12:02:22 IST" name="Default test" finished-at="2024-06-04T12:02:51 IST" duration-ms="29301">
       <class name="makemytrip.TestCases.SearchaTicket">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:makemytrip.TestCases.SearchaTicket@17f9d882]" started-at="2024-06-03T16:46:01 IST" name="setUp" finished-at="2024-06-03T16:46:19 IST" duration-ms="18003" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:makemytrip.TestCases.SearchaTicket@72e5a8e]" started-at="2024-06-04T12:02:22 IST" name="setUp" finished-at="2024-06-04T12:02:40 IST" duration-ms="18336" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="testFromCity()[pri:1, instance:makemytrip.TestCases.SearchaTicket@17f9d882]" started-at="2024-06-03T16:46:19 IST" name="testFromCity" finished-at="2024-06-03T16:46:21 IST" duration-ms="1615" status="PASS">
+        <test-method signature="testFromCity()[pri:1, instance:makemytrip.TestCases.SearchaTicket@72e5a8e]" started-at="2024-06-04T12:02:40 IST" name="testFromCity" finished-at="2024-06-04T12:02:42 IST" duration-ms="1638" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testFromCity -->
-        <test-method signature="testToCity()[pri:2, instance:makemytrip.TestCases.SearchaTicket@17f9d882]" started-at="2024-06-03T16:46:21 IST" name="testToCity" finished-at="2024-06-03T16:46:22 IST" duration-ms="1697" status="PASS">
+        <test-method signature="testToCity()[pri:2, instance:makemytrip.TestCases.SearchaTicket@72e5a8e]" started-at="2024-06-04T12:02:42 IST" name="testToCity" finished-at="2024-06-04T12:02:43 IST" duration-ms="1711" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testToCity -->
-        <test-method signature="selectDateTest()[pri:3, instance:makemytrip.TestCases.SearchaTicket@17f9d882]" started-at="2024-06-03T16:46:22 IST" name="selectDateTest" finished-at="2024-06-03T16:46:23 IST" duration-ms="222" status="PASS">
+        <test-method signature="selectDateTest()[pri:3, instance:makemytrip.TestCases.SearchaTicket@72e5a8e]" started-at="2024-06-04T12:02:43 IST" name="selectDateTest" finished-at="2024-06-04T12:02:43 IST" duration-ms="250" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- selectDateTest -->
-        <test-method signature="TravellersDataSelectTest()[pri:4, instance:makemytrip.TestCases.SearchaTicket@17f9d882]" started-at="2024-06-03T16:46:23 IST" name="TravellersDataSelectTest" finished-at="2024-06-03T16:46:23 IST" duration-ms="525" status="PASS">
+        <test-method signature="TravellersDataSelectTest()[pri:4, instance:makemytrip.TestCases.SearchaTicket@72e5a8e]" started-at="2024-06-04T12:02:43 IST" name="TravellersDataSelectTest" finished-at="2024-06-04T12:02:44 IST" duration-ms="574" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TravellersDataSelectTest -->
-        <test-method signature="testSearchButtonFunctionality()[pri:5, instance:makemytrip.TestCases.SearchaTicket@17f9d882]" started-at="2024-06-03T16:46:23 IST" name="testSearchButtonFunctionality" finished-at="2024-06-03T16:46:26 IST" duration-ms="2764" status="PASS">
+        <test-method signature="testSearchButtonFunctionality()[pri:5, instance:makemytrip.TestCases.SearchaTicket@72e5a8e]" started-at="2024-06-04T12:02:44 IST" name="testSearchButtonFunctionality" finished-at="2024-06-04T12:02:51 IST" duration-ms="6730" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSearchButtonFunctionality -->
