@@ -33,7 +33,9 @@ public interface Booking_details {
 	    String TRAVELLERS_DROPDOWN_LABEL = "//label[contains(@for,'travellers')]";
 	    String TRAVELLER_APPLY_BUTTON = "//button[@data-cy='travellerApplyBtn']";
 	    String TOTAL_TRAVELERS_DISPLAY = "//span[@class='appendRight10']//span[@class='font30 latoBlack']";
-
+	    
+	    //Search button
+	    String SearchBTN = "//a[contains(@class,'primaryBtn font24 latoBold widgetSearchBtn')]";
 	}
 
 

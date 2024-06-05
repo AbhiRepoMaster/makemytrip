@@ -181,7 +181,7 @@ public class HomePage implements Booking_details {
 			// If the date is not found on the current page, click the next month button
 			try {
 				WebElement nextMonthButton = wait
-						.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@aria-label='Next Month']")));
+						.until(ExpectedConditions.elementToBeClickable(By.xpath(NEXT_MONTH_BUTTON)));
 				nextMonthButton.click();
 				System.out.println("Moving to next month...");
 			} catch (Exception e) {
@@ -209,7 +209,7 @@ public class HomePage implements Booking_details {
 		int infants = Integer.parseInt(infantsStr);
 
 		// Open the travelers dropdown
-		WebElement returnElement = driver.findElement(By.xpath("//label[contains(@for,'travellers')]"));
+		WebElement returnElement = driver.findElement(By.xpath(TRAVELLERS_DROPDOWN));
 		Actions actions = new Actions(driver);
 		actions.moveToElement(returnElement).click().perform();
 
@@ -219,7 +219,7 @@ public class HomePage implements Booking_details {
 		selectNumberOfTravellers(driver, "infants", infants);
 
 		// Click on the apply button
-		WebElement applyButton = driver.findElement(By.xpath("//button[@data-cy='travellerApplyBtn']"));
+		WebElement applyButton = driver.findElement(By.xpath(TRAVELLER_APPLY_BUTTON));
 		applyButton.click();
 
 		// Print the selected traveler counts
@@ -232,7 +232,7 @@ public class HomePage implements Booking_details {
 
 		// Verify the total number of travelers displayed
 		WebElement totalTravelersDisplay = driver
-				.findElement(By.xpath("//span[@class='appendRight10']//span[@class='font30 latoBlack']"));
+				.findElement(By.xpath(TOTAL_TRAVELERS_DISPLAY));
 		String totalTravelersText = totalTravelersDisplay.getText().trim();
 		int actualTotal = Integer.parseInt(totalTravelersText);
 
@@ -253,7 +253,7 @@ public class HomePage implements Booking_details {
 	public void searchButtonFunctionality() throws InterruptedException {
 		Thread.sleep(500);
 		WebElement searchButton = driver
-				.findElement(By.xpath("//a[contains(@class,'primaryBtn font24 latoBold widgetSearchBtn')]"));
+				.findElement(By.xpath(SearchBTN));
 		searchButton.click();
 	}
 }
