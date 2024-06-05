@@ -20,6 +20,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import makemytrip.DataFetch.InputTestData;
 import makemytrip.ExtentReports.TestReports;
 import makemytrip.Pages.*;
 
@@ -53,11 +54,20 @@ public class SearchaTicket {
         homePage.enterFromCity("Shivaji");
     }
     
-    @Test (priority = 2)
-    public void testToCity() throws InterruptedException {
-    	Thread.sleep(1000);
-        homePage.enterToCity("Dabolim");
+//    @Test (priority = 2 , dataProvider="TestData",dataProviderClass=InputTestData.class)
+//    public void testToCity() throws InterruptedException {
+//    	Thread.sleep(1000);
+//        homePage.enterToCity("Dabolim");
+//    }
+    
+    
+    @Test(priority = 2, dataProvider = "TestData", dataProviderClass = InputTestData.class)
+    public void testToCity(String fromCity, String toCity, String dateToSelect, String adults, String children, String infants) throws InterruptedException {
+        Thread.sleep(1000);
+        homePage.enterToCity(toCity);
     }
+    
+    
       
     @Test(priority = 3)
     public void selectDateTest() {
@@ -125,7 +135,7 @@ public class SearchaTicket {
     }
     
     
-   // @AfterClass
+    @AfterClass
     public void tearDown() {
         driver.quit();
     }

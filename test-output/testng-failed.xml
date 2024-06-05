@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="makemytrip.TestCases.IdealWindowTest">
+      <class name="makemytrip.TestCases.SearchaTicket">
         <methods>
-          <include name="clickTicketingSystemAndVerifyTab"/>
+          <include name="selectDateTest"/>
+          <include name="testToCity"/>
           <include name="setUp"/>
-          <include name="tearDown"/>
         </methods>
-      </class> <!-- makemytrip.TestCases.IdealWindowTest -->
+      </class> <!-- makemytrip.TestCases.SearchaTicket -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

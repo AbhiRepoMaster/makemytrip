@@ -31,13 +31,7 @@ public class HomePage implements Booking_details {
 //        actions.click(fromCityInput).perform();
 //        actions.sendKeys(cityCode).sendKeys(Keys.ENTER).perform();
 //    } 
-    
-    
-    
-    
-    
-    
-    
+       
 
     public boolean enterFromCity(String cityCode) {
         WebElement fromCityInput = driver.findElement(By.xpath(FROM_CITY_INPUT));
