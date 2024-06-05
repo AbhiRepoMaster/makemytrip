@@ -27,116 +27,63 @@ import makemytrip.Pages.*;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 
-//import dev.failsafe.internal.util.Assert;
-
 public class SearchaTicket {
 	HomePage homePage;
-    WebDriverWait wait;
-    public static WebDriver driver;
-    static ExtentTest test;
-    static ExtentReports report;
-    TestReports reportinstance = new TestReports();
-    Search search = new Search(SearchaTicket.driver);
+	WebDriverWait wait;
+	public static WebDriver driver;
+	static ExtentTest test;
+	static ExtentReports report;
+	TestReports reportinstance = new TestReports();
+	Search search = new Search(SearchaTicket.driver);
 
-    @BeforeClass
-    public void setUp() {
-        driver = search.launchBookingScreen();
-        search.closePopup();
-    }
+	@BeforeClass
+	public void setUp() {
+		driver = search.launchBookingScreen();
+		search.closePopup();
+	}
 
-    
-    
-    @Test (priority = 1)
-    
-    public void testFromCity() throws InterruptedException {
-    	Thread.sleep(1000);
-    	homePage = new HomePage(driver);
-        homePage.enterFromCity("Shivaji");
-    }
-    
-//    @Test (priority = 2 , dataProvider="TestData",dataProviderClass=InputTestData.class)
-//    public void testToCity() throws InterruptedException {
-//    	Thread.sleep(1000);
-//        homePage.enterToCity("Dabolim");
-//    }
-    
-    
-    @Test(priority = 2, dataProvider = "TestData", dataProviderClass = InputTestData.class)
-    public void testToCity(String fromCity, String toCity, String dateToSelect, String adults, String children, String infants) throws InterruptedException {
-        Thread.sleep(1000);
-        homePage.enterToCity(toCity);
-    }
-    
-    
-      
-    @Test(priority = 3)
-    public void selectDateTest() {
-        String dateToSelect = "5 Jun 2024";
-        boolean isDateSelected = HomePage.selectDate(driver, dateToSelect, 22);
+	@Test(priority = 1, dataProvider = "TestData", dataProviderClass = InputTestData.class)
+	public void testFromCity(String fromCity, String toCity, String dateToSelect, String adults, String children,
+			String infants) throws InterruptedException {
+		Thread.sleep(1000);
+		homePage = new HomePage(driver);
+		homePage.enterFromCity(fromCity);
+	}
 
-        if (!isDateSelected) {
-            Assert.fail("Failed to select the date");
-        } else {
-            System.out.println("Date selected successfully. Exiting loop and passing the test.");
-        }
-    }
+	@Test(priority = 2, dataProvider = "TestData", dataProviderClass = InputTestData.class)
+	public void testToCity(String fromCity, String toCity, String dateToSelect, String adults, String children,
+			String infants) throws InterruptedException {
+		Thread.sleep(1000);
+		homePage.enterToCity(toCity);
+	}
 
-    @Test(priority = 4)
-    public void TravellersDataSelectTest() {
-        // Open the travelers dropdown
-        WebElement returnElement = driver.findElement(By.xpath("//label[contains(@for,'travellers')]"));
-        Actions actions = new Actions(driver);
-        actions.moveToElement(returnElement).click().perform();
+	@Test(priority = 3, dataProvider = "TestData", dataProviderClass = InputTestData.class)
+	public void selectDateTest(String fromCity, String toCity, String dateToSelect, String adults, String children,
+			String infants) {
+		//Pass in "d-MMM-yy" format
+		boolean isDateSelected = HomePage.selectDate(driver, dateToSelect, 22);
 
-        // Select the number of adults, children, and infants
-        int adults = 5;
-        int children = 4;
-        int infants = 3;
+		if (!isDateSelected) {
+			Assert.fail("Failed to select the date");
+		} else {
+			System.out.println("Date selected successfully. Exiting loop and passing the test.");
+		}
+	}
 
-        selectNumberOfTravellers("adults", adults);
-        selectNumberOfTravellers("children", children);
-        selectNumberOfTravellers("infants", infants);
+	@Test(priority = 4, dataProvider = "TestData", dataProviderClass = InputTestData.class)
+	public void travellersDataSelectTest(String fromCity, String toCity, String dateToSelect, String adultsStr,
+			String childrenStr, String infantsStr) throws InterruptedException {
+		homePage.travellersDataSelectTest(driver, fromCity, toCity, dateToSelect, adultsStr, childrenStr, infantsStr);
+	}
 
-        // Click on the apply button
-        WebElement applyButton = driver.findElement(By.xpath("//button[@data-cy='travellerApplyBtn']"));
-        applyButton.click();
-        System.out.println("Adults: " + adults);
-        System.out.println("Children: " + children);
-        System.out.println("Infants: " + infants);
+	@Test(priority = 5, dataProvider = "TestData", dataProviderClass = InputTestData.class)
+	public void testSearchButtonFunctionality(String fromCity, String toCity, String dateToSelect, String adults,
+			String children, String infants) throws InterruptedException {
+		homePage.searchButtonFunctionality();
+	}
 
-        int expectedTotal = adults + children + infants;
-        System.out.println("Expected Total Travelers: " + expectedTotal);
-
-        // Verify the total number of travelers displayed
-        WebElement totalTravelersDisplay = driver.findElement(By.xpath("//span[@class='appendRight10']//span[@class='font30 latoBlack']"));
-        String totalTravelersText = totalTravelersDisplay.getText().trim();
-        int actualTotal = Integer.parseInt(totalTravelersText);
-
-        System.out.println("Actual Total Travelers Displayed: " + actualTotal);
-
-        // Assert if the actual total matches the expected total
-        Assert.assertEquals(actualTotal, expectedTotal, "Total number of travelers does not match the expected value.");
-    }
-
-    private void selectNumberOfTravellers(String type, int count) {
-        String dataCy = type + "-" + count;
-        WebElement element = driver.findElement(By.xpath("//li[@data-cy='" + dataCy + "']"));
-        element.click();
-    }
-    
-    
-    
-    
-    @Test (priority = 5)
-    public void testSearchButtonFunctionality() throws InterruptedException {
-    	Thread.sleep(500);
-        WebElement searchButton = driver.findElement(By.xpath("//a[contains(@class,'primaryBtn font24 latoBold widgetSearchBtn')]"));
-        searchButton.click();
-    }
-    
-    
-    @AfterClass
-    public void tearDown() {
-        driver.quit();
-    }
+	// @AfterClass
+	public void tearDown() {
+		driver.quit();
+	}
 }
